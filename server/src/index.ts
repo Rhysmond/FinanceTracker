@@ -1,14 +1,16 @@
 import express from "express";
 import type { Express } from "express";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3001;
 
 app.use(express.json());
 
-const mongoURI: string =
-    "mongodb+srv://chengrhysmond_db_user:kq1d9vcPfbk5jon3@personalfinancetracker.eheq1pj.mongodb.net/?appName=PersonalFinanceTracker";
+const mongoURI = process.env.MONGO_URI as string;
 
 mongoose
     .connect(mongoURI)
